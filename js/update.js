@@ -79,6 +79,6 @@ $(document).ready(function(){
     });
   })
   .error(function(){
-    $('body .span12:first').html('Could not load data at ' + filename);
+    $('body .table:first').html('Could not load data at ' + filename);
   });
 });
