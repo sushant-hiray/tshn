@@ -113,7 +113,7 @@ def combine(now):
     f.write(json.dumps(current_data,indent=2))
     f.close()
 
-    # Save this snapshot if it's midnight so weh have a daily history
+    # Save this snapshot if it's midnight so we have a daily history
     if now.hour == 0 and now.minute == 0:
         fn = 'hn-data-%s.json' % now.strftime('%Y-%m-%d')
         shutil.copyfile(os.path.join('data', 'now.json'), os.path.join('data', fn))
@@ -125,13 +125,10 @@ if __name__ == '__main__':
     parser.add_option("-g", "--get", action="store_true", dest="get", default=None, help="Get most recent data")
     parser.add_option("-p", "--process", action="store_true", dest="process", default=None, help="Process most recent data")
     parser.add_option("-c", "--combine", action="store_true", dest="combine", default=None, help="Combine recent data files")
-    parser.add_option("-u", "--upload", action="store_true", dest="upload", default=None, help="Upload the recent data files")
-    parser.add_option("-d", "--deploy", action="store_true", dest="deploy", default=None, help="Deploy the server")
-    parser.add_option("-l", "--clean", action="store_true", dest="clean", default=None, help="Clean S3")
     (options, args) = parser.parse_args()
 
     if options.all:
-        options.get = options.process = options.combine = options.upload = options.deploy = True
+        options.get = options.process = options.combine = True
 
     now = datetime.now()
     now_15 = now.replace(minute=(now.minute/15)*15)
@@ -150,15 +147,3 @@ if __name__ == '__main__':
     if options.combine:
         print 'Generating a data file'
         combine(now_15)
-
-    if options.upload:
-        print 'Uploading to S3'
-        upload(now_15)
-
-    if options.deploy:
-        print 'Deploying to S3'
-        deploy(dirs = ['.','js','css','img'], exts = ['html', 'js', 'css', 'png', 'json'])
-
-    if options.clean:
-        print 'Cleaning S3'
-        clean(now_15)

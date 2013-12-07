@@ -14,7 +14,7 @@ $(document).ready(function(){
   }
 
   var date = getURLParameter('date');
-  // console.log('Date: ' + date);
+  console.log('Date: ' + date);
 
   var filename = '';
   if (date != 'null') {
@@ -28,9 +28,9 @@ $(document).ready(function(){
       <td>{{ idx }}</td> \
       <td><a href=\"{{ url }}\" target=\"_blank\">{{ title }} <small>({{ domain }})</small></a></td> \
       <td><a href=\"http://news.ycombinator.com/user?id={{ user }}\" target=\"_blank\">{{ user }}</a></td> \
-      <td><a href=\"http://news.ycombinator.com/item?id={{ thread_id }}\" target=\"_blank\">{{ num_comments }}</a></td> \
-      <td>{{ points }}</td> \
-      <td>{{ posted_time_string }}</td> \
+      <td><p class=\"text-center\"><a href=\"http://news.ycombinator.com/item?id={{ thread_id }}\" target=\"_blank\">{{ num_comments }}</a></p></td> \
+      <td><p class=\"text-center\">{{ points }}</p></td> \
+      <td><small>{{ posted_time_string }}</small></td> \
     </tr>");
 
   var all_data = {};
@@ -65,7 +65,7 @@ $(document).ready(function(){
 
     var all_data_list = [];
     $.each(all_data, function(thread_id,row) {
-      // console.log(row);
+      console.log(row);
       all_data_list.push(row);
     });
 
