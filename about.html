@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TSHN Top Stories of Hacker News from last 24 hours">
+    <meta name="author" content="Sushant Hiray">
+
+    <title>TSHN</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./css/sticky-footer.css"rel="stylesheet">
+
+    </head>
+
+  <body>
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">TSHN</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+	            <li><a href="#">Home</a></li>
+              <li class="active"><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/container -->
+      </div><!--/navbar -->  
+      <div class="container" >
+        <h1><small>What is this?</small></h1> 
+        Pretty simple. Every 15 minutes, TSHN scrapes the first page of Hacker News and generates a new page containing the top stories from the past 24 hours sorted in descending order by overall points.
+        <hr/>
+        <h1><small>Why the hell would you want to do that? </small></h1>
+        I was bored as we were having our winter holidays, so I started reading about <a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>. I was simultaneously checking out HN in a different tab. <br/>So I thought HN could be a nice place to start scraping. This is pretty useful as I keep checking on HN quite a few times during the whole day, having a sorted view for posts helps me read the interesting stuff first ^_^ <br/>
+        Also a friend pointed out, it is particularly useful in the morning too check on interesting posts, which could have gone buried while you were sleeping! 
+        <hr/>
+        <h1><small>How'd you do it? </small></h1>
+        Pretty simple! The code's up on <a href="https://github.com/sushant-hiray/tshn">GitHub</a>.<br/>
+        As I had mentioned before take a look at <a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a> and see how you can go about scraping the relevant data.<br/>
+        Once you are done with this, rest is just simple python script to combine the scraped data.<br/>
+        Thanks to <a href="http://www.getbootstrap.com">Bootstrap</a> for the minimal UI.<br/>
+        Make ajax calls to fetch the data.<br/>
+        That's it.<br/><br/>
+        Feel free to <a href="https://github.com/sushant-hiray/tshn">Fork It</a>.
+      </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">Built with love by <a href="https://www.facebook.com/sushant.hiray">@Sushant</a>.</p>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
