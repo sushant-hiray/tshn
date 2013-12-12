@@ -97,7 +97,7 @@ def combine(now):
     while datetime_cnt <= now:
         print 'Processing data for %s?' % datetime_cnt.strftime('%Y-%m-%d-%H-%M'),
         fn = 'hn-data-%s.json' % datetime_cnt.strftime('%Y-%m-%d-%H-%M')
-	    fp="/home/sushant/code/tshn/"
+	fp="/var/www/tshn/"
         fp += os.path.join('data', fn)
         if os.path.exists(fp):
             print 'Y'
@@ -133,7 +133,7 @@ if __name__ == '__main__':
 
     now = datetime.now()
     now_15 = now.replace(minute=(now.minute/15)*15)
-    filename = "/home/sushant/code/tshn"
+    filename = "/var/www/tshn"
     filename =  filename + "/" + os.path.join('data','hn-data-%s.html' % now_15.strftime('%Y-%m-%d-%H-%M'))
     filename_js = filename.replace('.html','.json')
 
