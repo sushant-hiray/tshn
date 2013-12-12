@@ -15,3 +15,7 @@ Now add a cron task as follows:
 2. Append the following line into the opened file:
    `*/15 * * * * <path to run.sh>`
 3. Once the cron task is set right, the script will scrape front page of HN every 15 minutes and update the top stories data accordingly.
+
+Demo
+----
+You can look over to www.wncc-iitb.org/tshn/ for the latest top stories.
