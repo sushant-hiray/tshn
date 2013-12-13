@@ -109,8 +109,9 @@ def combine(now):
         datetime_cnt += timedelta(minutes=15)
 
     print 'Got %d rows' % len(current_data)
-
-    f = open(os.path.join('data', 'now.json'),'w')
+    fp="/var/www/tshn/"
+    fp+=os.path.join('data','now.json')
+    f = open(fp,'w')
     f.write(json.dumps(current_data,indent=2))
     f.close()
 
