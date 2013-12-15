@@ -1,7 +1,7 @@
 from optparse import OptionParser
 import json
 import re
-import os
+import os,errno
 import shutil
 from datetime import datetime, timedelta
 import time
@@ -16,7 +16,13 @@ from bs4 import BeautifulSoup
 RE_NUM = re.compile(r'\d+')
 RE_TIME_AGO = re.compile(r'\d+\s\w+?\sago')
 
-
+#silently remove a file
+def silentremove(filename):
+    try:
+        os.remove(filename)
+    except OSError as e: # this would be "except OSError, e:" before Python 2.6
+        if e.errno != errno.ENOENT: # errno.ENOENT = no such file or directory
+            raise # re-raise exception if a different error occured
 # Download the first page of HN
 def get(filename):
     f = open(filename,'w')
@@ -120,6 +126,16 @@ def combine(now):
         fn = 'hn-data-%s.json' % now.strftime('%Y-%m-%d')
         shutil.copyfile(os.path.join('data', 'now.json'), os.path.join('data', fn))
 
+#clean previous day's counterpart file
+def clean(now):
+    past=datetime.now()-timedelta(days=1)
+    past = past.replace(minute=(past.minute/15)*15)
+    filename = "/var/www/tshn"
+    filename =  filename + "/" + os.path.join('data','hn-data-%s.html' % past.strftime('%Y-%m-%d-%H-%M'))
+    filename_json = filename.replace('.html','.json')
+    silentremove(filename)
+    silentremove(filename_json)
+
 
 if __name__ == '__main__':
     parser = OptionParser()
@@ -127,6 +143,7 @@ if __name__ == '__main__':
     parser.add_option("-g", "--get", action="store_true", dest="get", default=None, help="Get most recent data")
     parser.add_option("-p", "--process", action="store_true", dest="process", default=None, help="Process most recent data")
     parser.add_option("-c", "--combine", action="store_true", dest="combine", default=None, help="Combine recent data files")
+    parser.add_option("-d", "--clean", action="store_true", dest="combine", default=None, help="Clean previous days data files")
     (options, args) = parser.parse_args()
 
     if options.all:
@@ -149,3 +166,7 @@ if __name__ == '__main__':
     if options.combine:
         print 'Generating a data file'
         combine(now_15)
+
+    if options.clean:
+        print 'Removing previous data files'
+        clean(now_15)
