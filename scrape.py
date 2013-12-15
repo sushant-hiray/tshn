@@ -143,7 +143,7 @@ if __name__ == '__main__':
     parser.add_option("-g", "--get", action="store_true", dest="get", default=None, help="Get most recent data")
     parser.add_option("-p", "--process", action="store_true", dest="process", default=None, help="Process most recent data")
     parser.add_option("-c", "--combine", action="store_true", dest="combine", default=None, help="Combine recent data files")
-    parser.add_option("-d", "--clean", action="store_true", dest="combine", default=None, help="Clean previous days data files")
+    parser.add_option("-d", "--clean", action="store_true", dest="clean", default=None, help="Clean previous days data files")
     (options, args) = parser.parse_args()
 
     if options.all:
