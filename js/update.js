@@ -26,9 +26,9 @@ $(document).ready(function(){
   var template_row = Mustache.compile(" \
     <tr> \
       <td>{{ idx }}</td> \
-      <td><a href=\"{{ url }}\" target=\"_blank\">{{ title }} <small>({{ domain }})</small></a></td> \
-      <td><a href=\"http://news.ycombinator.com/user?id={{ user }}\" target=\"_blank\">{{ user }}</a></td> \
-      <td><p class=\"text-center\"><a href=\"http://news.ycombinator.com/item?id={{ thread_id }}\" target=\"_blank\">{{ num_comments }}</a></p></td> \
+      <td><a href=\"{{ url }}\" class=\" hnlink \" target=\"_blank\">{{ title }} <small>({{ domain }})</small></a></td> \
+      <td><a href=\"http://news.ycombinator.com/user?id={{ user }}\" class=\" hnlink \" target=\"_blank\">{{ user }}</a></td> \
+      <td><p class=\"text-center\"><a href=\"http://news.ycombinator.com/item?id={{ thread_id }}\" class=\" hnlink \" target=\"_blank\">{{ num_comments }}</a></p></td> \
       <td><p class=\"text-center\">{{ points }}</p></td> \
       <td><small>{{ posted_time_string }}</small></td> \
     </tr>");
