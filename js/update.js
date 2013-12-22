@@ -34,7 +34,7 @@ $(document).ready(function(){
     </tr>");
 
   var all_data = {};
-
+  $(".imgloader").show();
   $.getJSON(filename,function(json){
     // console.log(json);
 
@@ -69,6 +69,7 @@ $(document).ready(function(){
       all_data_list.push(row);
     });
 
+    $(".imgloader").hide();
     $.each(all_data_list.sort(compare_by_points).reverse(), function(idx,row) {
       var d = new Date(0);
       d.setUTCSeconds(row.posted_time);
