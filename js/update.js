@@ -14,7 +14,6 @@ $(document).ready(function(){
   }
 
   var date = getURLParameter('date');
-  console.log('Date: ' + date);
 
   var filename = '';
   if (date != 'null') {
@@ -30,7 +29,7 @@ $(document).ready(function(){
       <td><a href=\"http://news.ycombinator.com/user?id={{ user }}\" class=\" hnlink \" target=\"_blank\">{{ user }}</a></td> \
       <td><p class=\"text-center\"><a href=\"http://news.ycombinator.com/item?id={{ thread_id }}\" class=\" hnlink \" target=\"_blank\">{{ num_comments }}</a></p></td> \
       <td><p class=\"text-center\">{{ points }}</p></td> \
-      <td><small>{{ posted_time_string }}</small></td> \
+      <td><small<time class=\"timeago\" datetime=\" {{ iso_string }}\">{{ timeago_string }}</time></small></td> \
     </tr>");
 
   var all_data = {};
@@ -65,7 +64,6 @@ $(document).ready(function(){
 
     var all_data_list = [];
     $.each(all_data, function(thread_id,row) {
-      console.log(row);
       all_data_list.push(row);
     });
 
@@ -74,7 +72,8 @@ $(document).ready(function(){
       var d = new Date(0);
       d.setUTCSeconds(row.posted_time);
       row.idx = idx + 1;
-      row.posted_time_string = d.toLocaleString();
+      row.timeago_string = jQuery.timeago(d);
+      row.iso_string = d.toISOString();
       var output = template_row(row);
       $('#data-table').append(output);
     });
