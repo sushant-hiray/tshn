@@ -18,4 +18,4 @@ Now add a cron task as follows:
 
 Demo
 ----
-You can look over to www.wncc-iitb.org/tshn/ for the latest top stories.
+You can look over to [tshn.sushant-hiray.me](http://tshn.sushant-hiray.me) for the latest top stories.
