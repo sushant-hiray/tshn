@@ -71,11 +71,16 @@ $(document).ready(function(){
     $.each(all_data_list.sort(compare_by_points).reverse(), function(idx,row) {
       var d = new Date(0);
       d.setUTCSeconds(row.posted_time);
+      var cur = new Date();
+      var timeDiff = Math.abs(cur.getTime() - d.getTime());
+      var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
       row.idx = idx + 1;
       row.timeago_string = jQuery.timeago(d);
       row.iso_string = d.toISOString();
       var output = template_row(row);
-      $('#data-table').append(output);
+      if (diffDays <= 1) {
+          $('#data-table').append(output);
+      }
     });
   })
   .error(function(){
