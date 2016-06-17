@@ -67,6 +67,7 @@ $(document).ready(function(){
       all_data_list.push(row);
     });
 
+    var cur_idx = 1;
     $(".imgloader").hide();
     $.each(all_data_list.sort(compare_by_points).reverse(), function(idx,row) {
       var d = new Date(0);
@@ -74,12 +75,13 @@ $(document).ready(function(){
       var cur = new Date();
       var timeDiff = Math.abs(cur.getTime() - d.getTime());
       var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-      row.idx = idx + 1;
+      row.idx = cur_idx;
       row.timeago_string = jQuery.timeago(d);
       row.iso_string = d.toISOString();
       var output = template_row(row);
       if (diffDays <= 1) {
           $('#data-table').append(output);
+          cur_idx = cur_idx + 1;
       }
     });
   })
